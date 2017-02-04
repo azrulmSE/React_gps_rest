@@ -5,49 +5,38 @@
  */
 
 import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
-
-export default class React_gps_rest extends Component {
+import { AppRegistry } from 'react-native';
+import { Scene, Router } from 'react-native-router-flux'
+import Home from './pages/home'
+import GPS from './pages/GPS'
+import REST from './pages/REST'
+ 
+/*export default class App extends React.Component {*/
+export default class React_gps_rest extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      latitude: "0",
+      longitude: "0",
+      timestamp: "0"
+    }
+  }
+  reloadgeo = (lon,lat,times) => {
+    this.setState({latitude:lat, longitude:lon, timestamp:times})
+  }
+  GEO = () => {
+    return <GPS showlabel="1" reloadgeo={this.reloadgeo} />
+  }
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-    );
+        <Router>
+          <Scene key="root">
+            <Scene key="home" hideNavBar={true} component={Home} title="Welcome"/>
+            <Scene key="GPS" hideNavBar={false} component={this.GEO} title="GLOBAL POSITIONING SYSTEM"/>
+            <Scene key="REST" hideNavBar={false} component={REST} title="REST API"/>
+          </Scene>
+        </Router>)
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
 AppRegistry.registerComponent('React_gps_rest', () => React_gps_rest);
