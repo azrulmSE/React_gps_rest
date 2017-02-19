@@ -14,19 +14,18 @@ See the official [React Native website](https://facebook.github.io/react-native/
 
  - Download from github:
 
-``` git clone https://github.com/azrulmSE/React_gps_rest ```
+``` 	git clone https://github.com/azrulmSE/React_gps_rest ```
 
 	OR
 	
 ```git clone https://github.com/azrulmSE/React_gps_rest gps_rest ```
 - Install npm
 
-``` npm install ```
+``` 	npm install ```
 
  - Run react-native:
-```
-react-native run-android
-```
+ 
+```	react-native run-android```
 
 ### Getting Started
 
